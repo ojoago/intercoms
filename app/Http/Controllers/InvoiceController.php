@@ -12,21 +12,6 @@ use App\Models\Customer\MeterPrice;
 class InvoiceController extends Controller
 {
     //
-    private $fields = [
-            'accountnumber',
-            'customernames',
-            'gsm',
-            'email',
-            'region',
-            'address',
-            'meter_recomended',
-            'status',
-            'amount_paid',
-            'reference',
-            'payment_date',
-            'customers.created_at',
-            'charges'
-        ];
     private $_1q = ['single phase', '1 phase'];
     private $_3q = ['three phase', '3 phase'];
 
@@ -97,7 +82,21 @@ class InvoiceController extends Controller
     
     public function viewPayment(){
         try {
-            $lists = Customer::from('customers as c')->join('payments as p', 'customer_pid', 'c.pid')->orderBy('payment_date', 'DESC')->paginate(100, $this->fields);
+            $lists = Customer::from('customers as c')->join('payments as p', 'customer_pid', 'c.pid')->where('payment_date','<>',null)->orderBy('payment_date', 'DESC')->select(
+                'accountnumber',
+                'customernames',
+                'gsm',
+                'email',
+                'region',
+                'address',
+                'meter_recomended',
+                'status',
+                'amount_paid',
+                'reference',
+                'payment_date',
+                'c.created_at',
+                'charges',DB::raw('FORMAT(amount_paid, 2) as amount, DATE(payment_date) as date'))->paginate(20);
+           
             $summary = $this->sumAll();
             return Inertia::render('Rrr/ViewPayment', ['lists' => $lists, 'summary' => $summary]);
         } catch (\Throwable $e) {
@@ -163,15 +162,15 @@ class InvoiceController extends Controller
         ->selectRaw("SUM(amount_paid) as total")
         ->first();
         $all = Payment::get('id')->count();
-        $diff = Customer::join('payments', 'customer_id', 'customers.id')
+        $diff = Customer::join('payments', 'customer_pid', 'customers.pid')
         ->where('status',  'Payment Received')
         ->whereIn('meter_recomended', $this->_3q)
             ->selectRaw("SUM(amount_paid) as total")->first();
-        $_3q = Customer::join('payments', 'customer_id', 'customers.id')
+        $_3q = Customer::join('payments', 'customer_pid', 'customers.pid')
         ->where('status', 'Payment Received')
         ->whereIn('meter_recomended', $this->_3q)
             ->selectRaw("SUM(amount_paid) as total")->first();
-        $_1q = Customer::join('payments', 'customer_id', 'customers.id')
+        $_1q = Customer::join('payments', 'customer_pid', 'customers.pid')
         ->where('status',  'Payment Received')
         ->whereIn('meter_recomended', $this->_1q)
             ->selectRaw("SUM(amount_paid) as total")->first();

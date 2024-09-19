@@ -49,8 +49,8 @@ import { Head,Link } from '@inertiajs/vue3';
                             <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.meter_recomended }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.reference }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.status }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.created_at }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.amount_paid }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.date }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.amount }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-left">
                                 <Link :href="route('preview.rrr',{ rrr: rrr.reference })">
                                              <button class="p-1 oy-1 text-sm bg-green-500 text-white me-2 rounded inline-block">Preview</button>

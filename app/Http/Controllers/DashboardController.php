@@ -128,7 +128,7 @@ class DashboardController extends Controller
             'yearly' => $yearlyReport,
             'chartparams' => $chartparams,
         ];
-           dd($data);
+         
         return Inertia::render('Dashboard', ['data' => $data]);
     }
 
