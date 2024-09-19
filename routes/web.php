@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/view-payment',[InvoiceController::class,'viewPayment'])->name('payment');
     Route::inertia('/generate-rrr','Rrr/Generate')->name('generate');
     Route::post('/generate-rrr',[InvoiceController::class,'generateRRR'])->name('generate');
-    Route::inertia('/set-price', 'Rrr/Price')->name('set.price');
+    Route::get('/set-price', [InvoiceController::class, 'getMeterPrice'])->name('set.price');
     Route::post('/set-price', [InvoiceController::class, 'setMeterPrice']);
     Route::get('/preview-rrr', [InvoiceController::class, 'previewRRR'])->name('preview.rrr');
 

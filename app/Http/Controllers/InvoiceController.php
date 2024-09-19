@@ -134,6 +134,18 @@ class InvoiceController extends Controller
     }
 
 
+    public function getMeterPrice(Request $request){
+        
+        try {
+
+            $data = MeterPrice::all();
+           return Inertia::render('Rrr/Price',['data' => $data]);
+        } catch (\Throwable $e) {
+            logError($e->getMessage());
+            return ;
+        }
+       
+    }
     public function setMeterPrice(Request $request){
         
 

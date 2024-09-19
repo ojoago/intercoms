@@ -86,11 +86,12 @@ import { Link } from '@inertiajs/vue3';
     </li>
 
       </ul>
+      
       <div class="mt-auto border-t mb-8">
        <ul>
       
       <li><a href="#">Update Password</a></li>
-      <li><a href="#">Logout</a></li>
+      <li><Link :ref="route('logout')">Logout</Link></li>
       </ul>
 
       </div>
