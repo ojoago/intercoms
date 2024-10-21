@@ -2,6 +2,12 @@
 
     define('APP_NAME','Momas');
     define('BASEPAGE','dhasmom01@gmail.com');
+    define('NAIRA_UNIT', "&#8358;"); //NAIRA sign
+    define('APP_CARE_EMAIL', "support@momas.com"); //NAIRA sign
+    define('STS_500', "Something Went Wrong ...Error logged"); // error 500
+    define('STS_422', "Fill the Form Correctly"); // error 500
+    define('ERR_EMT', "Empty Result Set"); // error 500
+    define('ERR_PRM', "Empty Value"); // error 500
     define('REMITAHAS','524a9141c8cb71c088e02ee301afb6f846326838e8d96eb1f42c3185e2ddeed80f101c6e495252accde01bb0aa12fdda9b4569b3bded3d7fe9716bf33da2e9fa');
     define('Q1_PRICE', '63061.32');
     define('Q3_PRICE', '117910.69');

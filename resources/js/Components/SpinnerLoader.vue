@@ -1,23 +1,50 @@
-<template>
-  <div>
-    <div class="modal-overlay" v-if="spin.status">
-          <div calss="spinner flex flex-col  bg-indigo-600">
-            <span class="loader"></span>
-            <div id="spinner-text">{{spin.message}}</div> 
-          </div>
-      </div>
-  </div>
-</template>
-
 <script setup>
-import { useStore } from '@/stores/store';
-  const store = useStore();
-  const spin = computed(() => store?.spin);
-  // const spin = store.spin
+    
+import { computed } from "vue";
+import store from '@/store';
 
+// const store = useStore();
+// const spin =  store.state.spinnerLoader;
+const spinner = computed(() => store?.state?.spinnerLoader);
+const notification = computed(() => store?.state?.notification);
 </script>
 
-<style>
+<template>
+    <div>
+      <div class="modal-overlay z-100" v-if="spinner">
+          <div calss="spinner">
+            <span class="loader"></span>
+            <!-- <div id="spinner-text">loging Out...</div> -->
+          </div>
+      </div>
+
+      <div class="notification text-white animate-fade-in-down" v-if="notification?.status" :class="`${notification?.type}`">
+        {{ notification?.message }}
+      </div>
+    </div>
+</template>
+
+
+<style scoped>
+  .primary{
+        @apply bg-indigo-600 text-white  hover:bg-indigo-500 focus-visible:outline-indigo-600;
+    }
+    .secondary{
+        @apply bg-gray-600 text-white hover:bg-indigo-500 focus-visible:outline-indigo-600;
+    }
+    .bordered{
+        @apply bg-white text-indigo-800 border border-indigo-500 hover:bg-gray-50 focus-visible:outline-indigo-600;
+    }
+    .warning{
+        @apply bg-yellow-400 text-white hover:bg-red-500 focus-visible:outline-red-600;
+    }
+    .danger{
+        @apply bg-red-600 text-white hover:bg-red-500 focus-visible:outline-red-600;
+    }
+    .success{
+        @apply bg-optimal text-white hover:bg-optimal focus-visible:outline-optimal
+    }
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -31,7 +58,18 @@ import { useStore } from '@/stores/store';
     z-index: 9999999;
 }
 
-
+.notification{
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  bottom: 55px;
+  right: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all .5s ease;
+}
+  
 
 .spinner {
     display: block;
@@ -39,115 +77,264 @@ import { useStore } from '@/stores/store';
     margin-left:50% !important;
     float: center;
     width: 150px;
-    background-color: black;
   }
 
 
-/* 
- .loader {
-  width: 16px;
-  height: 16px;
-  box-shadow: 0 30px, 0 -30px;
-  border-radius: 4px;
-  background: currentColor;
-  display: block;
-  margin: -50px auto 0;
+ /* loader  */
+        /* .loader {
+            animation: rotate 1s infinite;
+            height: 50px;
+            width: 50px;
+        }
+
+        .loader:before,
+        .loader:after {
+            border-radius: 50%;
+            content: "";
+            display: block;
+            height: 20px;
+            width: 20px;
+        }
+
+        .loader:before {
+            animation: ball1 1s infinite;
+            background-color: #686060;
+            box-shadow: 30px 0 0 #ff3d00;
+            margin-bottom: 10px;
+        }
+
+        .loader:after {
+            animation: ball2 1s infinite;
+            background-color: #ff3d00;
+            box-shadow: 30px 0 0 #f1ff;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg) scale(0.8)
+            }
+
+            50% {
+                transform: rotate(360deg) scale(1.2)
+            }
+
+            100% {
+                transform: rotate(720deg) scale(0.8)
+            }
+        }
+
+        @keyframes ball1 {
+            0% {
+                box-shadow: 30px 0 0 #ff3d00;
+            }
+
+            50% {
+                box-shadow: 0 0 0 #ff3d00;
+                margin-bottom: 0;
+                transform: translate(15px, 15px);
+            }
+
+            100% {
+                box-shadow: 30px 0 0 #ff3d00;
+                margin-bottom: 10px;
+            }
+        }
+
+        @keyframes ball2 {
+            0% {
+                box-shadow: 30px 0 0 #fff;
+            }
+
+            50% {
+                box-shadow: 0 0 0 #3b3a3a;
+                margin-top: -20px;
+                transform: translate(15px, 15px);
+            }
+
+            100% {
+                box-shadow: 30px 0 0 #4b4949;
+                margin-top: 0;
+            }
+        } */
+         
+/* .loader {
+  width: 48px;
+  height: 48px;
   position: relative;
-  color: #795959;
-  transform: translateY(30px);
-  box-sizing: border-box;
-  animation: animloader 2s ease infinite;
 }
-.loader::after,
-.loader::before {
-  content: '';  
-  box-sizing: border-box;
-  width: 16px;
-  height: 16px;
-  box-shadow: 0 30px, 0 -30px;
-  border-radius: 4px;
-  background: currentColor;
-  color: #c78484;
+.loader::before , .loader::after{
+  content: '';
   position: absolute;
-  left: 30px;
-  top: 0;
-  animation: animloader 2s 0.2s ease infinite;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50% , -50%);
+  width: 48em;
+  height: 48em;
+  background-image:
+    radial-gradient(circle 10px, #6b6767 100%, transparent 0),
+    radial-gradient(circle 10px, #6b6767 100%, transparent 0),
+    radial-gradient(circle 10px, #6b6767 100%, transparent 0),
+    radial-gradient(circle 10px, #6b6767 100%, transparent 0),
+    radial-gradient(circle 10px, #6b6767 100%, transparent 0),
+    radial-gradient(circle 10px, #6b6767 100%, transparent 0),
+    radial-gradient(circle 10px, #6b6767 100%, transparent 0),
+    radial-gradient(circle 10px, #6b6767 100%, transparent 0);
+  background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
+                       13em -13em, -13em -13em, 13em 13em, -13em 13em;
+    background-repeat: no-repeat;
+  font-size: 0.5px;
+  border-radius: 50%;
+  animation: blast 1s ease-in infinite;
 }
-.loader::before {
-  animation-delay: 0.4s;
-  left: 60px;
+.loader::after {
+  font-size: 1px;
+  background: #4b4747;
+  animation: bounce 1s ease-in infinite;
 }
 
-@keyframes animloader {
-  0% {
-    top: 0;
-    color: rgb(135, 126, 126);
+@keyframes bounce {
+  0% , 100%{ font-size: 0.75px }
+  50% { font-size: 1.5px }
+}
+@keyframes blast {
+  0% , 40% {
+    font-size: 0.5px;
   }
-  50% {
-    top: 30px;
-    color: rgba(255, 255, 255, 0.2);
+  70% {
+    opacity: 1;
+    font-size: 4px;
   }
-  100% {
-    top: 0;
-    color: rgb(124, 81, 81);
+   100% {
+     font-size: 6px;
+    opacity: 0;
   }
-}  */
-    
-    /* circle */
+}
+     */
 
-    .loader {
-        font-size:60px;
-        color: #a78383;
-        width: 1em;
-        height: 1em;
-        box-sizing: border-box;
-        background-color: currentcolor;
-        position: relative;
-        border-radius: 50%;
-        transform: rotateX(-60deg) perspective(1000px);
-      }
-      .loader:before,
-      .loader:after {
-        content: '';
-        display: block;
-        position: absolute;
-        box-sizing: border-box;
-        top: 0;
-        left: 0;
-        width: inherit;
-        height: inherit;
-        border-radius: inherit;
-        animation: flowerFlow 1s ease-out infinite;
-      }
-      .loader:after {
-        animation-delay: .4s;
-      }
 
-      @keyframes flowerFlow {
-        0% {
-          opacity: 1;
-          transform: rotate(0deg);
-          box-shadow: 0 0 0 -.5em currentcolor,
-          0 0 0 -.5em currentcolor,
-          0 0 0 -.5em currentcolor,
-          0 0 0 -.5em currentcolor,
-          0 0 0 -.5em currentcolor,
-          0 0 0 -.5em currentcolor,
-          0 0 0 -.5em currentcolor,
-          0 0 0 -.5em currentcolor;
-        }
-        100% {
-          opacity: 0;
-          transform: rotate(180deg);
-          box-shadow: -1em -1em 0 -.35em currentcolor,
-          0 -1.5em 0 -.35em currentcolor,
-          1em -1em 0 -.35em currentcolor,
-          -1.5em 0 0 -.35em currentcolor,
-          1.5em -0 0 -.35em currentcolor,
-          -1em 1em 0 -.35em currentcolor,
-          0 1.5em 0 -.35em currentcolor,
-          1em 1em 0 -.35em currentcolor;
-        }
-      }
+
+
+
+/*      
+     .loader {
+        animation: rotate 1s infinite;
+        height: 50px;
+        width: 50px;
+    }
+
+
+  .loader:before,
+  .loader:after {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+  .loader:before {
+    animation: ball1 1s infinite;
+    background-color: #732f2f;
+    box-shadow: 30px 0 0 #7b3d3d;
+    margin-bottom: 10px;
+  }
+  .loader:after {
+    animation: ball2 1s infinite;
+    background-color: #313030;
+    box-shadow: 30px 0 0 #787777;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg) scale(0.8) }
+    50% { transform: rotate(360deg) scale(1.2) }
+    100% { transform: rotate(720deg) scale(0.8) }
+  }
+
+  @keyframes ball1 {
+    0% {
+      box-shadow: 30px 0 0 #343231;
+    }
+    50% {
+      box-shadow: 0 0 0 #474646;
+      margin-bottom: 0;
+      transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #ff3d00;
+      margin-bottom: 10px;
+    }
+  }
+
+  @keyframes ball2 {
+    0% {
+      box-shadow: 30px 0 0 #064c78;
+    }
+    50% {
+      box-shadow: 0 0 0 #706e6e;
+      margin-top: -20px;
+      transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #297bbe;
+      margin-top: 0;
+    }
+  }
+   */
+
+   .loader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 6rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    animation: rotate 1s infinite;
+    height: 250px;
+    width: 250px;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    animation: pulsOut 1.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.75));
+  }
+  .loader:before {
+    width: 100%;
+    padding-bottom: 100%;
+    box-shadow: inset 0 0 0 1rem #aea1a1;
+    animation-name: pulsIn;
+  }
+  .loader:after {
+    width: calc(100% - 2rem);
+    padding-bottom: calc(100% - 2rem);
+    box-shadow: 0 0 0 0 #a8a6a6;
+  }
+
+  @keyframes pulsIn {
+    0% {
+      box-shadow: inset 0 0 0 1rem #d3bfbf;
+      opacity: 1;
+    }
+    50%, 100% {
+      box-shadow: inset 0 0 0 0 #cbc8cc;
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulsOut {
+    0%, 50% {
+      box-shadow: 0 0 0 0 #fff;
+      opacity: 0;
+    }
+    100% {
+      box-shadow: 0 0 0 1rem #ccacac;
+      opacity: 1;
+    }
+  }
       
+
 </style>

@@ -1,15 +1,25 @@
+<script setup>
+    import SideBar from '@/Components/SideBar.vue';
+    import Footer from '@/Components/Footer.vue';
+    import AuthHeader from '@/Components/AuthHeader.vue';
+    import Flash from '@/Components/Flash.vue';
+import SpinnerLoader from '@/components/SpinnerLoader.vue';
+</script>
+
 <template>
     <!-- component -->
     <div class="flex h-screen">
         <div class="flex-1 flex flex-col overflow-hidden">
            
             <AuthHeader/>
-            <div class="flex h-full">
+
+            <div class="flex h-full  bg-[#f1f1f1]">
                 <SideBar/>
                 <main class="flex min-h-[90vh] flex-col w-full overflow-x-hidden overflow-y-auto mb-14">
-                    <div class="flex w-full mx-auto px-6 py-8">
+                    <div class="flex w-full mx-auto px-6 py-1">
                         <div class="flex flex-col w-full h-full">
                             <Flash/>
+                            <SpinnerLoader/>
                             <slot/>
                         </div>
                     </div>
@@ -30,12 +40,7 @@
    
 </template>
 
-<script setup>
-    import SideBar from '@/Components/SideBar.vue';
-    import Footer from '@/Components/Footer.vue';
-    import AuthHeader from '@/Components/AuthHeader.vue';
-    import Flash from '@/Components/Flash.vue';
-</script>
+
 
 <style scoped>
  ::-webkit-scrollbar {

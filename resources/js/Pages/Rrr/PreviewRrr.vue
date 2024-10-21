@@ -13,53 +13,50 @@ import { Head,Link } from '@inertiajs/vue3';
     <MainLayout>
 
         <div class="p-5 bg-gray-100">
-            <h1 class="text-xl mb-">
-                RRR List
+            <h1 class="text-xl text-center">
+                MAP Demand
             </h1>
 
             <div class="overflow-auto rounded-lg shadow">
 
-                <table class="w-full">
-                    <thead class="bg-gray-50 border-b-2 border-gray-200">
-                        <tr>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">S/N</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Account No.</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Names</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">gsm</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Email</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Meter type</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">RRR</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Status</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Date</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Amount</th>
+                
+        <div class="card mb-3">
+                    <div class="float-end">
                         
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left"> 
-                                <i class="fa fa-cog"></i>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white" v-for="(rrr,loop) in data.data" :key="loop">
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ loop+1 }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.accountnumber }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.customernames }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.gsm }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.email }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.meter_recomended }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.reference }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.status }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.created_at }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.amount_paid }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">
-                                <Link :href="route('preview.rrr',{ rrr: rrr.reference })">
-                                             <button class="p-1 oy-1 text-sm bg-green-500 text-white me-2 rounded inline-block">Preview</button>
-                                </Link>
-                            </td>
-                            
-                            
-                        </tr>
-                    </tbody>
-                </table>
+                        <button class="btn btn-primary" onclick="generatePDF()">Print</button>
+                    </div>
+                    
+                    <div class="card-body"  id="content">
+                        <div class="logo-base">
+                            <div class="jed">
+                                <img src=" " alt="JED  Logo" class="logo" id="logo">
+                            </div>
+                            <div class="t7">
+                                <img src="" alt="Momas Logo" class="logo" id="m-logo">
+
+                            </div>
+                        </div>
+                        <p class="h2 text-center">MAP Demand For Payment</p>
+                        <hr>
+                        Account No.: {{data.accountnumber}} <br>
+                        Account Name: {{data.customernames}} <br>
+                        Address : {{data.address}} <br>
+
+                        Meter Type: {{data.meter_recomended}} <br>
+                        You are hereby required to pay the sum of <b>₦ {{(data.price)}}</b> for the meter. <br>
+                       
+                        Remita Reference (RR) No.:  
+                        <strong>{{data.reference}}</strong> <br>
+                        Bank: Any Bank <br>
+                        Branch: Any Branch <br>
+
+                        <div class="text-center text-danger">
+                            Please Note that, this RRR is valid for 7 days Only. will expire on <b>{{ data.expiry_date }}</b>
+                        </div>
+                    </div>
+                    <div class="card-footer text-danger">
+                    </div>
+            </div>
                 
             </div>
 

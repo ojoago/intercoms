@@ -8,19 +8,19 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 let regions = [
-    {"id":  "Jos Metro", "name": "Jos Metro"},
-    {"id": "Gombe", "name": "Gombe"},
-    {"id": "Bukuru", "name": "Bukuru"},
-    {"id": "Bauchi", "name": "Bauchi"},
-    {"id": "Azare", "name": "Azare"},
-    {"id": "Makurdi", "name": "Makurdi"},
-    {"id": "Otukpo", "name": "Otukpo"},
-    {"id": "Gboko", "name": "Gboko"},
+    {"id":  "Jos Metro", "text": "Jos Metro"},
+    {"id": "Gombe", "text": "Gombe"},
+    {"id": "Bukuru", "text": "Bukuru"},
+    {"id": "Bauchi", "text": "Bauchi"},
+    {"id": "Azare", "text": "Azare"},
+    {"id": "Makurdi", "text": "Makurdi"},
+    {"id": "Otukpo", "text": "Otukpo"},
+    {"id": "Gboko", "text": "Gboko"},
 ]
 
 let phase = [
-    {"id": "Single Phase", "name": "Single Phase"},
-    {"id": "3 phase", "name": "Three Phase"},
+    {"id": "Single Phase", "text": "Single Phase"},
+    {"id": "3 phase", "text": "Three Phase"},
 ]
 
 

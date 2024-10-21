@@ -7,8 +7,8 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import Select1 from '@/Components/Select.vue';
 let phase = [
-    {"id": "Single Phase", "name": "Single Phase"},
-    {"id": "3 phase", "name": "Three Phase"},
+    {"id": "Single Phase", "text": "Single Phase"},
+    {"id": "3 phase", "text": "Three Phase"},
 ]
 
 const form = useForm({

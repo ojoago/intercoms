@@ -1,0 +1,75 @@
+[2024-10-21 11:00:17] local.INFO: array (
+  'requiresPayment' => 1,
+  'orderInfo' => 
+  array (
+    'orderStatusDescription' => 'Payment Reference generated',
+    'address' => 'big name',
+    'disco' => 'Jos Electricity Distribution Company Plc',
+    'orderReference' => '260798917764',
+    'orderStatus' => 'Payment Reference generated',
+    'accountNumber' => '61623321',
+    'orderDate' => '2024-10-21 11:00:17',
+    'serviceProviderName' => 'Momas',
+  ),
+  'paymentInfo' => 
+  array (
+    'payerPhoneNumber' => '07091606967',
+    'payerFirstName' => 'Peter Akobe',
+    'paymentReference' => '260798917764',
+    'txnDescription' => 'Payment for 3 phase meter, order ID 211024110013',
+    'payerEmail' => 'dhasmom01@gmail.com',
+    'txnAmount' => 198000.0,
+    'payerLastName' => '',
+    'expiresAt' => '',
+  ),
+)  
+[2024-10-21 11:12:51] local.INFO: array (
+  'requiresPayment' => 1,
+  'orderInfo' => 
+  array (
+    'orderStatusDescription' => 'Payment Reference generated',
+    'address' => 'big name',
+    'disco' => 'Jos Electricity Distribution Company Plc',
+    'orderReference' => '250798917768',
+    'orderStatus' => 'Payment Reference generated',
+    'accountNumber' => '61623321',
+    'orderDate' => '2024-10-21 11:12:51',
+    'serviceProviderName' => 'Momas',
+  ),
+  'paymentInfo' => 
+  array (
+    'payerPhoneNumber' => '07091606967',
+    'payerFirstName' => 'Peter Akobe',
+    'paymentReference' => '250798917768',
+    'txnDescription' => 'Payment for 1 phase meter, order ID 211024111250',
+    'payerEmail' => 'dhasmom01@gmail.com',
+    'txnAmount' => 112000.0,
+    'payerLastName' => '',
+    'expiresAt' => '',
+  ),
+)  
+[2024-10-21 11:22:57] local.INFO: array (
+  'requiresPayment' => 1,
+  'orderInfo' => 
+  array (
+    'orderStatusDescription' => 'Payment Reference generated',
+    'address' => 'big name',
+    'disco' => 'Jos Electricity Distribution Company Plc',
+    'orderReference' => '220798917776',
+    'orderStatus' => 'Payment Reference generated',
+    'accountNumber' => '61623321',
+    'orderDate' => '2024-10-21 11:22:57',
+    'serviceProviderName' => 'Momas',
+  ),
+  'paymentInfo' => 
+  array (
+    'payerPhoneNumber' => '07091606967',
+    'payerFirstName' => 'Peter Akobe',
+    'paymentReference' => '220798917776',
+    'txnDescription' => 'Payment for 3 phase meter, order ID 211024112255',
+    'payerEmail' => 'dhasmom01@gmail.com',
+    'txnAmount' => 198000.0,
+    'payerLastName' => '',
+    'expiresAt' => '',
+  ),
+)  

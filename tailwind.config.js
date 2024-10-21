@@ -14,17 +14,25 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                bauhaus:'bauhaus 93'
+                bauhaus:'bauhaus 93',
+                poppins: ['Poppins', 'sans-serif'],
             },
-            container:{
+            colors: {
+            optimal: {
+            light: '#3bb3c2',
+            DEFAULT: '#3bb3c2',
+            dark: '#3bb3c2',
+            },
+          },
+        container:{
         center:true,
-        padding:{
-          default:"1rem",
-          sm:"2rem",
-          lg:"4rem",
-          xl:"5rem",
-          "2xl":"6rem"
-        }
+        // padding:{
+        //   default:"1rem",
+        //   sm:"2rem",
+        //   lg:"4rem",
+        //   xl:"5rem",
+        //   "2xl":"6rem"
+        // }
       },
       keyframes: {
         "accordion-down": {

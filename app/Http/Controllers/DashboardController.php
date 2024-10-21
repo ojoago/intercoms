@@ -59,40 +59,43 @@ class DashboardController extends Controller
         $rrrToday = Customer::whereDate('created_at', justDate())->count('id');
         // today payment 
         $paidToday = Payment::whereDate('payment_date',  justDate())->count('id');
+        $paidTodayAmount = Payment::whereDate('payment_date',  justDate())->sum('amount_paid');
         // this month 
-        $_1qCountT = Customer::join('payments', 'customer_pid', 'customers.pid')
-            ->whereIn('meter_recomended', $this->_1q)
-            ->whereDate('payment_date', justDate())->count('payments.id');
-        $_1qAmountT = Customer::join('payments', 'customer_pid', 'customers.pid')
-            ->whereIn('meter_recomended', $this->_1q)
-            ->whereDate('payment_date', justDate())->sum('amount_paid'); //->count('id');
-        $_3qCountT = Customer::join('payments', 'customer_pid', 'customers.pid')
-            ->whereDate('payment_date',  justDate())
-            ->whereIn('meter_recomended', $this->_3q)->count('payments.id');
-        $_3qAmountT = Customer::join('payments', 'customer_pid', 'customers.pid')
-            ->whereDate('payment_date',  justDate())
-            ->whereIn('meter_recomended', $this->_3q)->sum('amount_paid'); //->count('id');
+        // $_1qCountT = Customer::join('payments', 'customer_pid', 'customers.pid')
+        //     ->whereIn('meter_recomended', $this->_1q)
+        //     ->whereDate('payment_date', justDate())->count('payments.id');
+        // $_1qAmountT = Customer::join('payments', 'customer_pid', 'customers.pid')
+        //     ->whereIn('meter_recomended', $this->_1q)
+        //     ->whereDate('payment_date', justDate())->sum('amount_paid'); //->count('id');
+        // $_3qCountT = Customer::join('payments', 'customer_pid', 'customers.pid')
+        //     ->whereDate('payment_date',  justDate())
+        //     ->whereIn('meter_recomended', $this->_3q)->count('payments.id');
+        // $_3qAmountT = Customer::join('payments', 'customer_pid', 'customers.pid')
+        //     ->whereDate('payment_date',  justDate())
+        //     ->whereIn('meter_recomended', $this->_3q)->sum('amount_paid'); //->count('id');
 
         // daily 
         // today rrr 
         $rrrCurrentMonth = Customer::whereDate('created_at',  justDate())->count('id');
         // today payment 
         $paidCurrentMonth = Payment::whereDate('payment_date', justDate())->count('id');
+        $paidCurrentMonthAmount = Payment::whereDate('payment_date', justDate())->sum('amount_paid');
         // this month 
-        $_1qCountCurrentMonth = Customer::join('payments', 'customer_pid', 'customers.pid')
-            ->whereIn('meter_recomended', $this->_1q)
-            ->whereDate('payment_date', justDate())->count('payments.id');
-        $_1qAmountCurrentMonth = Customer::join('payments', 'customer_pid', 'customers.pid')
-            ->whereIn('meter_recomended', $this->_1q)
-            ->whereDate('payment_date', justDate())->sum('amount_paid'); //->count('id');
-        $_3qCountCurrentMonth = Customer::join('payments', 'customer_pid', 'customers.pid')
-            ->whereDate('payment_date', justDate())
-            ->whereIn('meter_recomended', $this->_3q)->count('payments.id');
-        $_3qAmountCurrentMonth = Customer::join('payments', 'customer_pid', 'customers.pid')
-            ->whereDate('payment_date', justDate())
-            ->whereIn('meter_recomended', $this->_3q)->sum('amount_paid'); //->count('id');
+        // $_1qCountCurrentMonth = Customer::join('payments', 'customer_pid', 'customers.pid')
+        //     ->whereIn('meter_recomended', $this->_1q)
+        //     ->whereDate('payment_date', justDate())->count('payments.id');
+        // $_1qAmountCurrentMonth = Customer::join('payments', 'customer_pid', 'customers.pid')
+        //     ->whereIn('meter_recomended', $this->_1q)
+        //     ->whereDate('payment_date', justDate())->sum('amount_paid'); //->count('id');
+        // $_3qCountCurrentMonth = Customer::join('payments', 'customer_pid', 'customers.pid')
+        //     ->whereDate('payment_date', justDate())
+        //     ->whereIn('meter_recomended', $this->_3q)->count('payments.id');
+        // $_3qAmountCurrentMonth = Customer::join('payments', 'customer_pid', 'customers.pid')
+        //     ->whereDate('payment_date', justDate())
+        //     ->whereIn('meter_recomended', $this->_3q)->sum('amount_paid'); //->count('id');
         $allRRR = Customer::count('id');
         $allPaid = Payment::where('payment_date', '<>', null)->count('id');
+        $allPaidAmount = Payment::where('payment_date', '<>', null)->sum('amount_paid');
         // count by phases 
         // $distinct = Customer::join('payments', 'customer_id', 'customers.id')->distinct('accountnumber')->count('accountnumber');
         $_1qCount = Customer::join('payments', 'customer_pid', 'customers.pid')->whereIn('meter_recomended', $this->_1q)->count('payments.id');
@@ -101,34 +104,39 @@ class DashboardController extends Controller
         $_3qAmount = Customer::join('payments', 'customer_pid', 'customers.pid')->whereIn('meter_recomended', $this->_3q)->sum('amount_paid'); //->count('id');
         $report = DB::select("SELECT COUNT(id) AS count, SUM(amount_paid) AS amount,MONTH(payment_date) AS date FROM payments WHERE YEAR(payment_date) = '" . $year . "' GROUP BY MONTH(payment_date) HAVING amount > 0 ");
         $yearlyReport = DB::select("SELECT COUNT(id) AS count, SUM(amount_paid) AS amount,YEAR(payment_date) AS year FROM payments GROUP BY YEAR(payment_date) HAVING amount > 0 ");
+        $installation = DB::select("SELECT COUNT(id) AS count, meter_type FROM  installations  GROUP BY meter_type ");
+        $installationReport = DB::table('installations')->select("meter_type",DB::raw('COUNT(id) AS count'))->groupBy('meter_type')->groupBy('doi')->whereMonth('doi', $month)->whereYear('doi', $year)->get();
         $data = [
             // today 
             'todayRRR' => $rrrToday,
             'todayPayment' => $paidToday,
-            '1q_countT' => $_1qCountT,
-            '1q_amountT' => $_1qAmountT,
-            '3q_countT' => $_3qCountT,
-            '3q_amountT' => $_3qAmountT,
+            'paidTodayAmount' => number_format($paidTodayAmount),
+            // '3q_countT' => $_3qCountT,
+            // '3q_amountT' => $_3qAmountT,
             // this month 
             'rrrCurrentMonth' => $rrrCurrentMonth,
             'paidCurrentMonth' => $paidCurrentMonth,
-            '1qCountCurrentMonth' => $_1qCountCurrentMonth,
-            '1qAmountCurrentMonth' => $_1qAmountCurrentMonth,
-            '3qCountCurrentMonth' => $_3qCountCurrentMonth,
-            '3qAmountCurrentMonth' => $_3qAmountCurrentMonth,
+            'paidCurrentMonthAmount' => number_format($paidCurrentMonthAmount),
+            // '1qAmountCurrentMonth' => $_1qAmountCurrentMonth,
+            // '3qCountCurrentMonth' => $_3qCountCurrentMonth,
+            // '3qAmountCurrentMonth' => $_3qAmountCurrentMonth,
             // all 
             'all_rrr' => $allRRR,
             'all_paid' => $allPaid,
+            'allPaidAmount' => number_format($allPaidAmount),
             // 'distinct'=>$distinct,
-            '1q_count' => $_1qCount,
-            '1q_amount' => $_1qAmount,
-            '3q_count' => $_3qCount,
-            '3q_amount' => $_3qAmount,
+            '_1q_count' => $_1qCount,
+            '_1q_amount' => $_1qAmount,
+            '_3q_count' => $_3qCount,
+            '_3q_amount' => $_3qAmount,
             'report' => $report,
             'yearly' => $yearlyReport,
             'chartparams' => $chartparams,
+            'installation' => $installation,
+            'installationReport' => $installationReport,
         ];
          
+
         return Inertia::render('Dashboard', ['data' => $data]);
     }
 

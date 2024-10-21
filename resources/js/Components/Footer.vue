@@ -1,9 +1,9 @@
 <template>
   <div >
-    <footer class="container mx-auto border-t bottom-0 flex justify-between">
+    <footer class="container mx-auto border-t bottom-0 flex justify-between px-8">
     <!-- Your site footer -->
-    <p>&copy; 2024  <nuxt-link to="#" class="text-xl font-bold bauhaus">TraQ</nuxt-link></p>
-    <!--<p>Powered  <nuxt-link to="#" class="text-xl font-bold bauhaus">Optimal</nuxt-link> Soft</p> -->
+    <p>&copy; 2024  <a to="#" class="text-xl font-bold bauhaus">MOMAS</a></p>
+    <p  class="">Powered By  <a href="" class=" text-xl font-bold text-poppins">Hipernetix</a> </p>
     
   </footer>
   </div>

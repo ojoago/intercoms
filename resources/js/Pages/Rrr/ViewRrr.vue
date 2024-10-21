@@ -22,35 +22,35 @@ import { Head,Link } from '@inertiajs/vue3';
                 <table class="w-full">
                     <thead class="bg-gray-50 border-b-2 border-gray-200">
                         <tr>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">S/N</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Account No.</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Names</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">gsm</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Email</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Meter type</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">RRR</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Status</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Date</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Amount</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">S/N</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Account No.</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Names</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">gsm</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Email</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Meter type</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">RRR</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Status</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Date</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Amount</th>
                         
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left"> 
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left  table-bordered"> 
                                 <i class="fa fa-cog"></i>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="bg-white" v-for="(rrr,loop) in data.data" :key="loop">
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ loop+1 }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.accountnumber }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.customernames }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.gsm }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.email }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.meter_recomended }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.reference }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.status }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.created_at }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">{{ rrr.amount_paid }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left">
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ loop+1 }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.accountnumber }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.customernames }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.gsm }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.email }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.meter_recomended }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.reference }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.status }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.created_at }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.amount_paid }}</td>
+                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">
                                 <Link :href="route('preview.rrr',{ rrr: rrr.reference })">
                                              <button class="p-1 oy-1 text-sm bg-green-500 text-white me-2 rounded inline-block">Preview</button>
                                 </Link>
