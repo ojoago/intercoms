@@ -53,6 +53,8 @@ class DependencyController extends Controller
             logError($e->getMessage());
         }
     }
+
+    
     public function searchScheduleList($query)
     {
 

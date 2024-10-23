@@ -115,6 +115,8 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:staff,super admin'])->group(function () {});
 
+    Route::post('/update-passord', [StaffController::class, 'updatePassword']);//->name('damaged.item.detail');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

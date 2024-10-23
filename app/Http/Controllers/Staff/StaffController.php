@@ -104,6 +104,28 @@ class StaffController extends Controller
 
 
 
+    public function updatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'min:5', 'confirmed'],
+        ]);
+
+        if (!$validator->fails()) {
+            try {
+                $user = User::where('pid', getUserPid())->first();
+                $user->password = $request->password;
+                $result = $user->save();
+                return pushResponse($result, "Password Updated");
+            } catch (\Throwable $e) {
+                logError($e->getMessage());
+                return responseMessage(status: 204, data: [], msg: STS_500);
+            }
+        }
+        return responseMessage(data: $validator->errors()->toArray(), status: 422, msg: STS_422);
+    }
+
+
    
         
 }
