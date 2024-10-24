@@ -81,7 +81,12 @@ defineProps({
                         </div>
                     </div>
                 </div>
-                <div class="p-3 m-1 shadow-md rounded-md border ">
+                
+
+             </div>
+
+             <div class="grid grid-cols-1 md:grid-cols-4 gap-1">
+             <!--  <div class="p-3 m-1 shadow-md rounded-md border ">
                     <h2 class="text-xl font-bold text-gray-800">Card Title</h2>
                     <p class="mt-2 text-gray-600">
                     This is a basic card component built using Tailwind CSS. You can add text, images, and buttons here to create a useful UI element.
@@ -105,7 +110,7 @@ defineProps({
                     </a>
                     </div>
                 </div>
-
+            -->
              </div>
             
 

@@ -47,16 +47,15 @@ class InvoiceController extends Controller
             $res = RequestController::generateRequest($data);
            
             if ($res['status'] == 1) {
-                return redirect()->intended(route('preview.rrr', ['rrr' => $res['data']], absolute: false))->with('succss', 'Payment Reference Generated');
+                return redirect()->route('preview.rrr', ['rrr' => $res['data']])->with('succss', 'Payment Reference Generated');
             }
-            return redirect()->intended(back())->with('error', 'Failed to Generate RRR --- ' . $res['message']);
+            return redirect()->back()->with('error', 'Failed to Generate RRR --- ' . $res['message']);
         } catch (\Throwable $e) {
             logError($e->getMessage());
             return redirect()->back()->with('error', 'Failed to Generate RRR --- ' . $e->getMessage());
            
         }
 
-        dd($request->all());
     }
 
     public function viewRrr(){

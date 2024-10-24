@@ -49,9 +49,9 @@ const changePage = (url) => {
                     <div>
                         
                  <div class="flex justify-between">
-                            <InputLabel for="file" value="Excel File" />
-                            <a href="/files/images/MAF data.xlsx" class="text-optimal font-bold">Download File</a>
-                        </div>
+                    <InputLabel for="file" value="Excel File" />
+                    <a href="/files/images/MAF data.xlsx" class="text-optimal font-bold">Download File</a>
+                </div>
                 <TextInput
                     id="email"
                     type="file"
