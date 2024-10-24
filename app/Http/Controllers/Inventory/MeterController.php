@@ -41,7 +41,6 @@ class MeterController extends Controller
 
     public function installedList(){
         try {
-            
 
             $data = Installation::with('origin')->with('feeder11kv')->with('feeder33kv')->latest()->limit(100)->get();
             return pushData($data);
@@ -89,6 +88,8 @@ class MeterController extends Controller
 
         if (!$validator->fails()) {
             try {
+                $installer = getInstallerSupervisor($request->installer);
+
                 $data  = [
                     'pid' => $request->pid ?? public_id(),
                     'meter_number' => $request->meter_number ,
@@ -118,7 +119,9 @@ class MeterController extends Controller
                     'business_unit' => $request->business_unit ,
                     'x_cordinate' => $request->x_cordinate ,
                     'y_cordinate' => $request->y_cordinate ,
-                    'installer' => $request->installer ?? 'i' ,
+                    'installer' => $request->installer,
+                    'supervisor' => $installer->supervisor,
+                    'team_pid' => $installer->team_pid,
                     // 'supervisor',
                     // 'rf_channel',
                     // 'din',

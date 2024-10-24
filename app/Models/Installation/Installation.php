@@ -16,10 +16,18 @@ class Installation extends Model
         'region_pid', 'pid', 'meter_number',  'preload', 'state' ,  'doi',  'dt_name', 'dt_type', 'upriser' , 'pole' , 'tariff' ,
         'advtariff' , 'fullname' , 'gsm' ,  'email' , 'premises' , 'phase',  'address', 'remark',  'feeder_33kv',  'feeder_11kv',
         'meter_type', 'meter_brand', 'meter_tech' , 'estimated' , 'account_no' , 'business_unit',  'x_cordinate',  'y_cordinate' ,
-        'installer' ,  'supervisor' , 'rf_channel' ,  'din' , 'seal' , 'dt_code'
+        'installer' ,  'supervisor' , 'rf_channel' ,  'din' , 'seal' , 'dt_code',
+        'team_pid'
     ];
 
     protected $appends = ['date'];
+
+
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_pid', 'id');
+    }
 
 
     public function feeder33kv()

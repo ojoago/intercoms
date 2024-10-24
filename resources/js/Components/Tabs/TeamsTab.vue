@@ -62,7 +62,6 @@
 
 
     const teams = ref({})
-    const supervisor = ref({})
     function loadTeams(url = 'load-teams'){
         store.dispatch('getMethod', { url:url }).then((data) => {
         if (data?.status == 200) {
@@ -73,6 +72,18 @@
         })
     }
     loadTeams()
+
+      supervisor()
+    const supervisors = ref({})
+
+     function supervisor() {
+        store.dispatch('loadDropdown', 'supervisors').then(({ data }) => {
+            supervisors.value = data;
+        }).catch(e => {
+            console.log(e);
+        })
+    }
+
 
 </script>
 

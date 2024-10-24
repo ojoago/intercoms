@@ -139,5 +139,7 @@ Route::get('/drop-zone-state', [DropDownController::class, 'dropDownZoneState'])
 Route::get('/drop-zone/{state_id}', [DropDownController::class, 'dropDownZone']);
 Route::get('/drop-meter-types', [DropDownController::class, 'dropDownMeterType']);
 Route::get('/drop-meter-brands', [DropDownController::class, 'dropDownMeterBrand']);
+Route::get('/drop-supervisors', [DropDownController::class, 'dropDownSupervisor']);
+Route::get('/drop-installers', [DropDownController::class, 'dropDownInstallers']);
 
 require __DIR__.'/auth.php';

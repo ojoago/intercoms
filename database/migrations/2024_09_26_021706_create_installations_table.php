@@ -46,6 +46,7 @@ return new class extends Migration
             $table->string('y_cordinate')->nullable();
             $table->string('installer')->nullable();
             $table->string('supervisor')->nullable();
+            $table->string('team_pid')->nullable();
             $table->string('rf_channel')->nullable();
             $table->string('din')->nullable();
             $table->string('seal')->nullable();

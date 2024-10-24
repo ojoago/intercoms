@@ -110,7 +110,8 @@ class TeamController extends Controller
     
     private function addMember(array $data){
         try {
-            return Team::updateOrCreate(['team_pid' => $data['team_pid'] ,'region_pid' => $data['region_pidzx']],$data);
+            return TeamMember::updateOrCreate(['team_pid' => $data['team_pid'], 'user_pid' => $data['user_pid']], $data);
+
         } catch (\Throwable $e) {
             logError($e->getMessage());
             return false;

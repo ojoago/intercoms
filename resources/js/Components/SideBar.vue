@@ -87,12 +87,15 @@ import { Link,usePage } from '@inertiajs/vue3';
 
         </div>
         
-        
+        <!-- 
         <Link :href="route('assigned.meters')" class="flex link hover:text-optimal" :class="activeRoute('assigned.meters') ? ' text-optimal font-bold' : 'text-gray-700'">
             <font-awesome-icon icon="fa-solid fa-cube " class="facon pt-1" />
             
             <span class="nav-name">Assigned Meter </span>
         </Link>
+    -->
+
+
         <Link :href="route('installations')" class="flex link hover:text-optimal " :class="activeRoute('installations') ? ' text-optimal font-bold' : 'text-gray-700'">
             <font-awesome-icon icon="fa-solid fa-book-open " class="facon pt-1" />
             

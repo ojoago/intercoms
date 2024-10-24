@@ -12,7 +12,7 @@ defineProps({
     <MainLayout>
          
         <div class="py-2 pt-4 bg-white">
-                 <h1 class="px-6 py-2 rounded-lg text-xl m-4 border">
+                 <h1 class="px-6 py-2 rounded-lg text-xl my-4 mx-1 border">
                 Dashboard
             </h1>
              <div class="grid grid-cols-1  md:grid-cols-4 gap-1">

@@ -237,19 +237,19 @@ defineProps({
                     <thead class="bg-gray-50 border-b-2 border-gray-200">
                         <tr>
                             <th width ="5%" class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">S/N</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Region </th>
+                           <!--  <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Region </th> -->
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Item</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">description</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Quantity</th>
                             <th width ="5%"  class="p-3 text-sm font-semibold tracking-wide text-left table-bordered"> 
-                                <font-awesome-icon class="fa-solid fas fa-cog"/>
+                                <font-awesome-icon icon="fa-solid fas fa-cog"/>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="bg-white" v-for="(list,loop) in lists?.data" :key="loop">
                             <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ loop+1 }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ list.region?.name }}</td>
+                          <!--  <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ list.region?.name }}</td> -->
                             <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ list.item?.name }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ list.item?.description }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ list.quantity }} {{ list.item?.unit }}</td>

@@ -2,6 +2,8 @@
 import MainLayout from '@/Layouts/MainLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head,Link } from '@inertiajs/vue3';
+import { useHelper } from '@/composables/helper';
+const { numberFormat } = useHelper()
  defineProps({
     data:Array
  })
@@ -16,23 +18,22 @@ import { Head,Link } from '@inertiajs/vue3';
             <h1 class="text-xl text-center">
                 MAP Demand
             </h1>
-
+        <!-- <div class="float-end border m-2">
+                        <button class="btn btn-primary" onclick="generatePDF()">Print</button>
+                    </div>
+                -->
             <div class="overflow-auto rounded-lg shadow">
 
                 
-        <div class="card mb-3">
-                    <div class="float-end">
-                        
-                        <button class="btn btn-primary" onclick="generatePDF()">Print</button>
-                    </div>
-                    
+        <div class="card mb-3 p-2">
+                   
                     <div class="card-body"  id="content">
-                        <div class="logo-base">
+                        <div class="logo-base flex justify-between">
                             <div class="jed">
-                                <img src=" " alt="JED  Logo" class="logo" id="logo">
+                                <img src="/files/images/jed logo.png" alt="JED  Logo" class="w-40 logo" id="logo">
                             </div>
                             <div class="t7">
-                                <img src="" alt="Momas Logo" class="logo" id="m-logo">
+                               <img src="/files/images/momas logo.jpg" class="w-40 rounded-lg" alt="Momas logo">
 
                             </div>
                         </div>
@@ -43,7 +44,7 @@ import { Head,Link } from '@inertiajs/vue3';
                         Address : {{data.address}} <br>
 
                         Meter Type: {{data.meter_recomended}} <br>
-                        You are hereby required to pay the sum of <b>₦ {{(data.price)}}</b> for the meter. <br>
+                        You are hereby required to pay the sum of <b>₦ {{numberFormat(data.price)}}</b> for the meter. <br>
                        
                         Remita Reference (RR) No.:  
                         <strong>{{data.reference}}</strong> <br>
