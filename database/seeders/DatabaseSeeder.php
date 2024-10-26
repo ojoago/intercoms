@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class ,
             AdminSeeder::class,
+            MeterTypeSeeder::class,
+            MeterBrandSeeder::class,
             ImportTableSeeder::class,
         ]);
         // User::factory()->create([

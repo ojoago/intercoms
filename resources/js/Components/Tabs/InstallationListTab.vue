@@ -221,6 +221,17 @@
         })
     }
 
+     loadInstallers()
+    const installers = ref({})
+    function loadInstallers() {
+        store.dispatch('loadDropdown', 'installers').then(({ data }) => {
+            installers.value = data;
+        }).catch(e => {
+            console.log(e);
+        })
+    }
+
+
 </script>
 
 
@@ -348,7 +359,7 @@
                                             <div class="flex ">
                                                 <div class="flex items-center ml-2">
                                                     <label for="radio1" class="mr-2 text-sm font-medium text-gray-900">Public</label>
-                                                    <input id="radio1" type="radio" name="dt_type" v-model="meterForm.dt_type" value="Private" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                                    <input id="radio1" type="radio" name="dt_type" v-model="meterForm.dt_type" value="Public" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
                                                 </div>
                                                 <div class="flex items-center ml-2">
                                                     <label for="radio2" class="mr-2 text-sm font-medium text-gray-900">Private</label>
@@ -531,7 +542,7 @@
                                         <InputLabel for="pole" value="Service Center" />
                                         <TextInput
                                             id="pole"
-                                            type="number"
+                                            type="text"
                                             class="mt-1 block w-full"
                                             v-model="meterForm.service_center"
                                             placeholder="Customer Estimated Load"
@@ -648,7 +659,7 @@
                             <!--<th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Connection Status</th> -->
                             <!-- <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">contact information</th> -->
                             <th width ="5%"  class="p-3 text-sm font-semibold tracking-wide text-left table-bordered"> 
-                                <font-awesome-icon class="fa-solid fas fa-cog"/>
+                                <font-awesome-icon icon="fa-solid fas fa-cog"/>
                             </th>
                         </tr>
                     </thead>

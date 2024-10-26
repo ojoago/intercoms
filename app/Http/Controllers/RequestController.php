@@ -28,6 +28,10 @@ class RequestController extends Controller
         ]);
 
         if(!$validator->fails()){
+            $price = getMeterPrice($request->meter_recomended) ;
+            if(!$price){
+                return customResponse(0, 'Please Contact '. SERVICEPROVIDER . ' Admin to configure Meter prices', '');
+            }
 
             $data = [
                 'customernames' => ucwords($request->cust_names) ,
@@ -50,7 +54,7 @@ class RequestController extends Controller
             if ($save) {
                 $data['customer_pid'] = $save->pid;
                 $response = RemittaController::generateRemitaRRR($data);
-                logError($response);
+                // logError($response);
                 if ($response['status'] === 1) {
                     $rrr = $this->loadRRR($response['data']->reference);
                     if ($rrr) {
@@ -155,7 +159,7 @@ class RequestController extends Controller
         curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $output = curl_exec($ch);
-        logError($output);
+        // logError($output);
         if ($output === FALSE) {
             return "cURL Error" . curl_error($ch);
         }
@@ -212,7 +216,7 @@ class RequestController extends Controller
                 'payerPhoneNumber' => $data->gsm,
                 'payerFirstName' => $data->customernames,
                 'paymentReference' => $data->reference,
-                'txnDescription' => 'Payment for ' . $data->type . ' meter, order ID ' . $data->order_id,
+                'txnDescription' => 'Payment for ' . $data->type . ' ' . SERVICEPROVIDER .' meter, order ID ' . $data->order_id,
                 'payerEmail' => $data->email,
                 'txnAmount' => $data->price,
                 'payerLastName' => '',

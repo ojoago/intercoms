@@ -28,6 +28,12 @@ class InvoiceController extends Controller
         ]);
 
         try {
+            $price = getMeterPrice($request->meter_recomended);
+            if (!$price) {
+                return redirect()->back()->with('error','Please Contact Admin to configure Meter prices',);
+
+            }
+
             // return message if price is null 
             $data = [
                 'customernames' => ucwords($request->cust_names),
@@ -40,7 +46,7 @@ class InvoiceController extends Controller
                 'disco_code' => '007',
                 'orderId' => orderId(),
                 'pid' => public_id(),
-                'price' => getMeterPrice($request->meter_recomended),
+                'price' => $price,
                 'date' => fullDate()
             ];
 

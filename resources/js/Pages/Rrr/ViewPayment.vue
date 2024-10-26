@@ -35,9 +35,9 @@ import { Head,Link } from '@inertiajs/vue3';
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Date</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Amount</th>
                         
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left  table-bordered"> 
+                           <!--<th class="p-3 text-sm font-semibold tracking-wide text-left  table-bordered"> 
                                  <font-awesome-icon class="fa-solid fas fa-cog"/>
-                            </th>
+                            </th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -52,11 +52,11 @@ import { Head,Link } from '@inertiajs/vue3';
                             <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.status }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.date }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ rrr.amount }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">
+                            <!-- <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">
                                 <Link :href="route('preview.rrr',{ rrr: rrr.reference })">
                                              <button class="p-1 oy-1 text-sm bg-green-500 text-white me-2 rounded inline-block">Preview</button>
-                                </Link>
-                            </td>
+                                </Link> 
+                            </td> -->
                             
                             
                         </tr>

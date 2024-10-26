@@ -36,6 +36,7 @@ class ItemController extends Controller
             $lists = ItemQuantity::with('item')
             // ->with('region')
             ->paginate(20);
+            return pushData($lists, 'Item name Loaded');
             return Inertia::render('Inventory/InventoryList', ['lists' => $lists]);
         } catch (\Throwable $e) {
             logError($e->getMessage());

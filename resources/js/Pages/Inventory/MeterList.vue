@@ -67,7 +67,7 @@ const changePage = (url) => {
             
             
             <div class="flex items-center justify-end ">
-                <button  @click="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class=" bg-optimal text-white px-4 py-2 rounded mr-2">Submit</button>
+                <button  @click="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class=" bg-optimal text-white px-4 py-2 rounded mr-2 mb-1">Submit</button>
                
             </div>
                 </div>

@@ -52,7 +52,7 @@ const submit = () => {
              
         <form @submit.prevent="submit">
             <div class="flex justify-around items-start md:items-center p-2">
-                <h2 class="text-2xl font-semibold">Generate RRR</h2>
+                <h2 class="text-2xl font-semibold text-optimal">Generate RRR</h2>
             </div>
     
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-4 px-4 md:py-8 md:px-8 text-sm">
@@ -132,7 +132,7 @@ const submit = () => {
             
 
             <div class="gap-4 py-4 px-4">
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton class="ms-4  bg-optimal text-white px-4 py-2 rounded mr-2" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Submit
                 </PrimaryButton>
             </div>

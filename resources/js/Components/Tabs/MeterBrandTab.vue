@@ -73,20 +73,20 @@
 <template>
     <div>
         
-        <Modal :show="showModal" @close="closeModal" max-width="sm" title="Add Item Name " @submit="createItemName">
+        <Modal :show="showModal" @close="closeModal" max-width="sm" title="Add Brand " @submit="createItemName">
            <form action="" class="px-4 py-2">
            
                      
 
                      <div>
-                        <InputLabel for="text" value="Team Name" />
+                        <InputLabel for="text" value="Name" />
 
                         <TextInput
                             id="text"
                             type="text"
                             class="mt-1 block w-full"
                             v-model="teamForm.brand"
-                            placeholder="e.g Technovati"
+                            placeholder="e.g Momas"
                             autocomplete="off"
                         />
 

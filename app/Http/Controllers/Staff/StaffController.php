@@ -27,6 +27,7 @@ class StaffController extends Controller
     }
 
     public function createStaff(Request $request){
+       
         $validator = Validator::make($request->all(),[
             'email' => 'required|unique:users',
             'firstname' => 'required',
@@ -69,16 +70,29 @@ class StaffController extends Controller
                 ];
 
                 // 431
-                $user = [
+                $pwd = randomNumber(6);
+                $userdata = [
                     'pid' => $request->pid ?? public_id(),
                     'type' => '431',
                     'email' => $request->email,
-                    'password' => '1234',
+                    'password' => $pwd,
                 ];
                 
                 DB::beginTransaction();
-                $user = User::updateOrCreate(['pid' => $user['pid'] ],$user);
+                $user = User::updateOrCreate(['pid' => $userdata['pid'] ],$userdata);
 
+                if($user){
+                    $mail = [
+                        'email' => $userdata['email'],
+                        'blade' => 'auth',
+                        // 'blade' => 'message' ,
+                        // 'username' => $data['username'],
+                        'gsm' => $request->gsm ,
+                        'password' => $pwd,
+                        'subject' => 'Welcome to '. SERVICEPROVIDER
+                    ];
+                    sendMail($mail);
+                }
                 // if (!isset($request->pid)) {
                     $user->assignRole($request->role);
                 // }

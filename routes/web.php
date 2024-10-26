@@ -85,7 +85,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/meter-list', [MeterController::class, 'index'])->name('meter.list');
     Route::post('/meter-list', [MeterController::class, 'addMeterList']);
-    Route::get('/inventory-list', [ItemController::class, 'inventoryList'])->name('inventory.list');
+    Route::inertia('/inventory-list', 'Inventory/InventoryList')->name('inventory.list');
+    Route::get('/load-inventory-list', [ItemController::class, 'inventoryList']);//->name('inventory.list');
     Route::post('/add-inventory-item', [ItemController::class, 'addInventoryItem'])->name('add.inventory.item');
     Route::post('/remove-damage-item', [ItemController::class, 'removeDamageItem'])->name('remove.damage.item');
     Route::get('/damaged-items', [ItemController::class, 'damagedItems'])->name('damage.item');

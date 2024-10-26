@@ -52,7 +52,7 @@ const { numberFormat } = useHelper()
                         Branch: Any Branch <br>
 
                         <div class="text-center text-danger">
-                            Please Note that, this RRR is valid for 7 days Only. will expire on <b>{{ data.expiry_date }}</b>
+                            Please Note that, this RRR  will expire on <b>{{ data.expiry_date }}</b>
                         </div>
                     </div>
                     <div class="card-footer text-danger">

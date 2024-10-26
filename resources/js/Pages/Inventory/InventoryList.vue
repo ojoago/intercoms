@@ -43,12 +43,19 @@ import { Inertia } from '@inertiajs/inertia';
         })
     }
 
-    
 
-defineProps({
-    lists:Array
-})
- 
+    const lists = ref({})
+
+ function loadList(url = 'load-inventory-list'){
+        store.dispatch('getMethod', { url:url }).then((data) => {
+        if (data?.status == 200) {
+            lists.value = data.data;
+        }
+        }).catch(e => {
+            console.log(e);
+        })
+    }
+    loadList()
  const changePage = (url) => {
     Inertia.get(url, {}, { preserveState: true, preserveScroll: true });
  
@@ -97,6 +104,7 @@ defineProps({
             itemForm.value.errors = transformValidationErrors(data.data)
         } else if (data?.status == 201) {
             closeModal()
+            loadList()
         }
         }).catch(e => {
             console.log(e);

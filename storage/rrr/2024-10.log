@@ -73,3 +73,28 @@
     'expiresAt' => '',
   ),
 )  
+[2024-10-25 14:41:27] local.INFO: array (
+  'requiresPayment' => 1,
+  'orderInfo' => 
+  array (
+    'orderStatusDescription' => 'Payment Reference generated',
+    'address' => 'big name',
+    'disco' => 'Jos Electricity Distribution Company Plc',
+    'orderReference' => '260798918872',
+    'orderStatus' => 'Payment Reference generated',
+    'accountNumber' => '61623321',
+    'orderDate' => '2024-10-25 14:41:27',
+    'serviceProviderName' => 'Momas',
+  ),
+  'paymentInfo' => 
+  array (
+    'payerPhoneNumber' => '07091606967',
+    'payerFirstName' => 'Peter Akobe',
+    'paymentReference' => '260798918872',
+    'txnDescription' => 'Payment for 3 phase Momas meter, order ID 251024144125',
+    'payerEmail' => 'dhasmom01@gmail.com',
+    'txnAmount' => 198000.0,
+    'payerLastName' => '',
+    'expiresAt' => '',
+  ),
+)  

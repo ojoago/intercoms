@@ -2,9 +2,10 @@
 
 namespace App\Models\Installation;
 
+use App\Models\State;
+use App\Models\Region\Team;
 use App\Models\Admin\Feeder\Feeder11;
 use App\Models\Admin\Feeder\Feeder33;
-use App\Models\State;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

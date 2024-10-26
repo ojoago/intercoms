@@ -191,3 +191,9 @@ function sendMail($param)
         return false;
     }
 }
+
+
+function randomNumber($len = 7)
+{
+    return substr(random_int(1, 99999999999999999), 1, $len);
+}

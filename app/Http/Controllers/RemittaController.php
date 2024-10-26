@@ -73,6 +73,9 @@ class RemittaController extends Controller
 
     public static function generateRemitaRRR($info)
     {
+        $date = new \DateTime();
+        $date->modify('+10 days');
+        $expiryDate = $date->format('d/m/Y'); 
         $remit = [
             "serviceTypeId" => SERVICETYPEID,
             "amount" => $info['price'],
@@ -80,6 +83,8 @@ class RemittaController extends Controller
             "payerEmail" => $info['email'],
             "payerPhone" => $info['gsm'],
             'orderId' => $info['orderId'],
+            'expiryDate' => $expiryDate,
+            'expiresAt' => $expiryDate,
             "hash" => REMITAHAS,
             "customFields" => [
                 "type" => "ALL",
@@ -95,6 +100,7 @@ class RemittaController extends Controller
             $data['order_id'] = $info['orderId'];
             $data['customer_pid'] = $info['customer_pid'];
             $data['reference'] = $data['RRR'];
+            $data['expiry_date'] = $expiryDate;
             $payment = self::addPaymentRecord($data);
             $response = ['status' => 1, 'data' => $payment];
             return $response;

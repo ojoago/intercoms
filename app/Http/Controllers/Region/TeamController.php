@@ -44,7 +44,7 @@ class TeamController extends Controller
                 // ->where('region_pid', getRegionPid())
                 ;
             })] ,
-            'supervisor' => 'nullable|exists:users,pid' ,
+            'supervisor' => 'required|exists:users,pid' ,
         ]);
 
        if(!$validator->fails()){
