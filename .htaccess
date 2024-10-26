@@ -1,10 +1,9 @@
-http://momasprime.invites.com.ng/
 
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-SSL} !on
-RewriteCond %{HTTP_HOST} ^\momasprime\.invites\.com\.ng$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.momasprime\.invites\.com\.ng
-RewriteRule ^/?$ "https\:\/\/momasprime\.invites\.com\.ng\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^\comsprime\.memmserve\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.comsprime\.memmserve\.com
+RewriteRule ^/?$ "https\:\/\/comsprime\.memmserve\.com\/" [R=301,L]
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteRule ^(.*)$ public/$1 [L]
