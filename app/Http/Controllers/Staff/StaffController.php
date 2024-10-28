@@ -14,7 +14,7 @@ class StaffController extends Controller
     //
     public function loadStaff(){
         try {
-            $data = UserDetail::with('user')->with('origin')->with('lga')
+            $data = UserDetail::with('user')->with('user.roles')->with('origin')->with('lga')
             // ->where('region_pid',getRegionPid())
             ->get();
             return pushData($data, 'Users loaded');

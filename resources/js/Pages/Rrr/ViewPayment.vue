@@ -1,12 +1,27 @@
 <script setup>
 import MainLayout from '@/Layouts/MainLayout.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+
 import { Head,Link } from '@inertiajs/vue3';
+import { ref } from 'vue';
+    import store from '@/store';
+
  defineProps({
     lists:Array ,
     summary: Array
  })
  
+ const lists = ref({})
+ function loadItem(url = 'load-payment'){
+        store.dispatch('getMethod', { url:url }).then((data) => {
+        if (data?.status == 200) {
+            lists.value = data.data;
+        }
+        }).catch(e => {
+            console.log(e);
+        })
+    }
+    loadItem()
 </script>
 
 <template>
@@ -18,16 +33,46 @@ import { Head,Link } from '@inertiajs/vue3';
             <h1 class="text-xl mb-">
                 RRR List
             </h1>
+            
 
             <div class="overflow-auto rounded-lg shadow">
-
+              <!--  <div class="flex flex-row gap-1">
+                    <div class="flex-1">
+                        <TextInput
+                        id="email"
+                        type="text"
+                        class="mt-1 block w-full"
+                        placeholder="Account Number, Name, Phone number, RRR"
+                        required
+                    />
+                    </div>
+                    <div class="flex-1">
+                        <TextInput
+                        id="email"
+                        type="date"
+                        class="mt-1 block w-full"
+                        placeholder="Account Number, Name, Phone number, RRR"
+                        required
+                    />
+                    </div>
+                    <div class="flex-1">
+                        <TextInput
+                        id="email"
+                        type="date"
+                        class="mt-1 block w-full"
+                        placeholder="Account Number, Name, Phone number, RRR"
+                        required
+                    />
+                    </div>
+                   
+                </div> -->
                 <table class="w-full">
                     <thead class="bg-gray-50 border-b-2 border-gray-200">
                         <tr>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">S/N</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Account No.</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Names</th>
-                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">gsm</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">PHone Number</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Email</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">Meter type</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">RRR</th>

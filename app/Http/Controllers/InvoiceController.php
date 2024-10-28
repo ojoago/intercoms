@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportPayment;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Customer\Payment;
 use App\Models\Customer\Customer;
 use Illuminate\Support\Facades\DB;
 use App\Models\Customer\MeterPrice;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InvoiceController extends Controller
 {
@@ -80,6 +82,7 @@ class InvoiceController extends Controller
             'c.created_at',
             'charges'
         )->orderByDesc('created_at')->paginate(20);
+        return pushData($data);
         return Inertia::render('Rrr/ViewRrr',['data' =>$data]);
     }
 
@@ -101,13 +104,23 @@ class InvoiceController extends Controller
                 'c.created_at',
                 'charges',DB::raw('FORMAT(amount_paid, 2) as amount, DATE(payment_date) as date'))->paginate(20);
            
-            $summary = $this->sumAll();
+            // $summary = $this->sumAll();
+            return pushData($lists);
             return Inertia::render('Rrr/ViewPayment', ['lists' => $lists, 'summary' => $summary]);
         } catch (\Throwable $e) {
             logError($e->getMessage());
+           return pushData([]);
             return Inertia::render('Rrr/ViewPayment', ['list' =>[], 'summary' => []])->with('error','Something Went Wrong');
         }
         
+    }
+
+    public function exportPayment(Request $request){
+        $fromDate = $request->query('from');
+        $toDate = $request->query('to');
+        $from = date('Y-m-d',strtotime($fromDate));
+        $to = date('Y-m-d',strtotime($toDate));
+        return Excel::download(new ExportPayment($fromDate, $toDate), "customer payment from {$from} to {$to}.xlsx");
     }
 
 

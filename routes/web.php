@@ -31,8 +31,13 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
-    Route::get('/view-rrr',[InvoiceController::class,'viewRrr'])->name('rrr');
-    Route::get('/view-payment',[InvoiceController::class,'viewPayment'])->name('payment');
+    Route::inertia('/view-rrr', 'Rrr/ViewRrr')->name('rrr');
+    Route::get('/load-rrr',[InvoiceController::class,'viewRrr']);
+
+    Route::inertia('/view-payment', 'Rrr/ViewPayment')->name('payment');
+    Route::get('/load-payment',[InvoiceController::class,'viewPayment']);
+    Route::get('/export-payment',[InvoiceController::class,'exportPayment']);
+
     Route::inertia('/generate-rrr','Rrr/Generate')->name('generate');
     Route::post('/generate-rrr',[InvoiceController::class,'generateRRR'])->name('generate');
     Route::get('/set-price', [InvoiceController::class, 'getMeterPrice'])->name('set.price');
