@@ -24,13 +24,13 @@
     define('NOTIFYPAYMENTURL', "https://jedecosystem.com/map/api/payConfirmation/index.php");
 // remita constants goes here 
     /* live params*/
-    // define("MERCHANTID", "40816499");
-    // define("SERVICETYPEID", "40816498");
-    // define("APIKEY", "GTOC36UA");
+    define("MERCHANTID", "9971329361");
+    define("SERVICETYPEID", "14943428240");
+    define("APIKEY", "ZV2ZHCVM");
     /* demo params */
-    define("MERCHANTID", "2547916");
-    define("SERVICETYPEID", "4430731");
-    define("APIKEY", "1946");
+    // define("MERCHANTID", "2547916");
+    // define("SERVICETYPEID", "4430731");
+    // define("APIKEY", "1946");
 
     define("LIVEGATEWAYURL", "https://login.remita.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit");
     define("GATEWAYURL", "https://demo.remita.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit");

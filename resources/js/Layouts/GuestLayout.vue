@@ -21,7 +21,7 @@ import SpinnerLoader from '@/components/SpinnerLoader.vue';
                         </ul>
                     </div>
                 </div>
-         <div class="main-content container flex justify-between mx-auto">
+         <div class="main-content container flex flex-col sm:flex-row justify-between mx-auto">
             <div class="w-full">
                 <div class="content">
                      <Flash/>

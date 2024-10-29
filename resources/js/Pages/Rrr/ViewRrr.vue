@@ -21,6 +21,38 @@ import { ref } from 'vue';
     }
     loadItem()
 
+
+    function exportTableToExcel(tableID, filename = ''){
+var downloadLink;
+var dataType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+var tableSelect = document.getElementById(tableID);
+var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+// Create a Blob from the table HTML
+var blob = new Blob([tableHTML], { type: dataType });
+
+// Create a link element
+downloadLink = document.createElement("a");
+
+// File name
+filename = filename ? filename + '.xlsx' : 'excel_data.xlsx';
+
+// Set the link's href to a URL created from the Blob
+downloadLink.href = URL.createObjectURL(blob);
+
+// Set the download attribute with the file name
+downloadLink.download = filename;
+
+// Append the link to the document body
+document.body.appendChild(downloadLink);
+
+// Trigger the download by simulating a click
+downloadLink.click();
+
+// Remove the link from the document
+document.body.removeChild(downloadLink);
+}
+
 </script>
 
 <template>
@@ -41,7 +73,8 @@ import { ref } from 'vue';
                         placeholder="Account Number, Name, Phone number, RRR"
                         required
                     /> -->
-                <table class="w-full">
+                 <!---   <button @click="exportTableToExcel('RRRTable', 'RRR')">Export Table to Excel</button> -->
+                <table class="w-full" id="RRRTable">
                     <thead class="bg-gray-50 border-b-2 border-gray-200">
                         <tr>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">S/N</th>

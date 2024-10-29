@@ -27,7 +27,7 @@
                 {{-- <p>Username : {{$param['username']}}</p> --}}
                 <p>Phone Number : {{$param['gsm']}}</p>
                 <p>Password : {{$param['password']}}</p>
-                <p>Note that you can login with either your Email and Password</p>
+                <p>Note that you can login with your Email and Password</p>
             
         </td>
     </tr>
