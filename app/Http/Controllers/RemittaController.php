@@ -165,7 +165,7 @@ class RemittaController extends Controller
             "description": "' . $dsc . '"
             }',
             'method' => 'POST',
-            'url' => GATEWAYURL,
+            'url' => LIVEGATEWAYURL,
         ];
         $json_response = RequestController::pushNotification($requestData);
         $jsonData = substr($json_response, 7, -1);
