@@ -3,7 +3,26 @@
     import Footer from '@/Components/Footer.vue';
     import AuthHeader from '@/Components/AuthHeader.vue';
     import Flash from '@/Components/Flash.vue';
-import SpinnerLoader from '@/components/SpinnerLoader.vue';
+    import SpinnerLoader from '@/components/SpinnerLoader.vue';
+    import { onMounted } from 'vue';
+
+    
+    onMounted(() => {
+        let navName = document.querySelectorAll(".nav-link");
+        for (let i = 0; i < navName.length; i++) {
+            navName[i].addEventListener("click", () => {
+                if(window.innerWidth < 756){
+                    sideBar.classList.toggle('showSidebar')
+                }
+            })
+        }
+        let sidebarBtn = document.querySelector('#toggleSideBar')
+        let sideBar = document.querySelector('.sideBar')
+        sidebarBtn.addEventListener('click', () => {
+            sideBar.classList.toggle('showSidebar')
+        })
+    })
+
 </script>
 
 <template>
@@ -13,7 +32,7 @@ import SpinnerLoader from '@/components/SpinnerLoader.vue';
            
             <AuthHeader/>
 
-            <div class="flex h-full  bg-[#f1f1f1]">
+            <div class="flex h-full  bg-[#f1f1f1] relative">
                 <SideBar/>
                 <main class="flex min-h-[90vh] flex-col w-full overflow-x-hidden overflow-y-auto mb-14">
                     <div class="flex w-full mx-auto px-6 py-1">

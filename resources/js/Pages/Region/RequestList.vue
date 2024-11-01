@@ -57,7 +57,7 @@
       }
     };
 
-   const  editRequest = (item) => {
+   const  approveRequest = (item) => {
       requestForm.value = {
         date: item.date ,
         receiver: item.receiver ,
@@ -205,8 +205,8 @@
                             <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ item?.collector?.username }}</td>
                             <!--<td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered">{{ item.description }}</td> -->
                            <td class="p-3 text-sm font-semibold tracking-wide text-left table-bordered flex" >
-                                <button class="p-1 oy-1 text-sm bg-red-500 text-white me-2 inline-block" @click="editRequest(item)">Reject</button>
-                                <button class="p-1 oy-1 text-sm bg-optimal text-white me-2 inline-block" @click="editRequest(item)">Approve</button>
+                                <button class="p-1 oy-1 text-sm bg-red-500 text-white me-2 inline-block" @click="rejectRequest(item.pid)">Reject</button>
+                                <button class="p-1 oy-1 text-sm bg-optimal text-white me-2 inline-block" @click="approveRequest(item)">Approve</button>
                             </td>
                             
 

@@ -1,1 +1,0 @@
-import{_ as o,o as s,c}from"./app-xsfzURpa.js";const e={},t={src:"/files/images/momas logo.jpg",alt:"Momas Logo",class:"rounded-md"};function a(n,r){return s(),c("img",t)}const m=o(e,[["render",a]]);export{m as A};

@@ -156,6 +156,8 @@ const store = createStore({
         setSpinner: (state,spin) =>{
             state.spinnerLoader = spin;
         },
+      
+        
         notify: (state, { message, type='success' }) => {
             state.notification.status = true;
             state.notification.type = type;

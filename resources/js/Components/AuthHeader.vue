@@ -5,7 +5,6 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link,Head } from '@inertiajs/vue3';
 
     import Modal from '@/Components/Modal.vue';
@@ -15,6 +14,8 @@ import { Link,Head } from '@inertiajs/vue3';
     import { formatError } from "@/composables/formatError";
 import store from '@/store';
     const { transformValidationErrors } = formatError()
+
+
     const showModal = ref(false)
     const closeModal = () =>{
         showModal.value = false;
@@ -101,7 +102,9 @@ import store from '@/store';
                     <div class="flex justify-between h-10">
                         <div class="flex">
                             <!-- Logo -->
-                            
+                              <button class="m-3 block md:hidden" id="toggleSideBar">
+                                <font-awesome-icon icon="fa-solid fa-bars items-center"  />
+                            </button>
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
                                     <ApplicationLogo
@@ -109,9 +112,10 @@ import store from '@/store';
                                     />
                                 </Link>
                             </div>
-
+                           
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
