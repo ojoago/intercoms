@@ -26,7 +26,7 @@ import { Link,usePage } from '@inertiajs/vue3';
 </script>
 
 <template>
-<aside class="z-100 md:z-auto hidden md:flex w-72 h-full absolute sm:static bg-[#f1f1f1] sideBar " id="sideBar">
+<aside class="z-100  absolute hidden w-72 h-full bg-[#f1f1f1] sideBar md:z-auto md:flex sm:static" id="sideBar">
   <div class="flex h-full w-full flex-col overflow-y-auto rounded-md border bg-card pb-5">
       <ul class="pl-2">
      

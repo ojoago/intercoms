@@ -34,8 +34,8 @@ defineProps({
            <div class="flex justify-around items-start md:items-center p-2">
                     <h2 class="text-2xl font-semibold">Set Meter Price</h2>
                 </div>
-            <div class="flex ">
-                 <form @submit.prevent="submit" class="w-1/2">
+            <div class="flex flex-col sm:flex-row">
+                 <form @submit.prevent="submit" class="w-1/2 sm:w-full">
                   
                     <div class="mt-4 flex flex-col ">
                        <Select1 label="Meter Type" placeholder="Select Option"
@@ -66,7 +66,7 @@ defineProps({
                         </button>
                     </div>
                 </form>
-               <div class="w-1/2">
+               <div class="w-1/2 sm:w-full">
                  <table class="w-full m-4">
                     <thead class="bg-gray-50 border-b-2 border-gray-200">
                         <tr>
