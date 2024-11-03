@@ -46,9 +46,9 @@ class DashboardController extends Controller
         $report = DB::select("SELECT COUNT(id) AS count, SUM(amount_paid) AS amount,MONTH(payment_date) AS date FROM payments WHERE YEAR(payment_date) = '" . $year . "' GROUP BY MONTH(payment_date) HAVING amount > 0 ");
         
         // all rrr 
-        $rrrToday = Customer::count('id');
+        // $rrrToday = Customer::count('id');
         // payment 
-        $paidToday = Payment::count('id');
+        // $paidToday = Payment::count('id');
         // daily 
         // today rrr 
         $rrrToday = Customer::whereMonth('created_at', $month)->whereYear('created_at', $year)->count('id');
@@ -56,9 +56,9 @@ class DashboardController extends Controller
         $paidToday = Payment::whereDate('payment_date',  justDate())->count('id');
 
         // today rrr 
-        $rrrToday = Customer::whereDate('created_at', justDate())->count('id');
+        // $rrrToday = Customer::whereDate('created_at', justDate())->count('id');
         // today payment 
-        $paidToday = Payment::whereDate('payment_date',  justDate())->count('id');
+        // $paidToday = Payment::whereDate('payment_date',  justDate())->count('id');
         $paidTodayAmount = Payment::whereDate('payment_date',  justDate())->sum('amount_paid');
         // this month 
         // $_1qCountT = Customer::join('payments', 'customer_pid', 'customers.pid')
